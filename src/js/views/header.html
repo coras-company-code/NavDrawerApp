@@ -1,0 +1,31 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-flex-bar-start">
+  <oj-bind-if test="[[startBtn.visible]]">
+   <oj-button id="drawerToggleButton" on-oj-action='[[startBtn.click]]' display="icons" chroming="borderless">
+     <!-- <span slot="startIcon" class="[[startBtn.icons]]"></span> -->
+     <span slot='startIcon' :class="[[startBtn.icons]]"></span>
+     <span>Navigation Drawer</span>
+   </oj-button>
+  </oj-bind-if>
+</div>
+<div role="heading" class="oj-hybrid-applayout-bar-title">
+  <h1 class="oj-hybrid-applayout-header-title"><oj-bind-text value="[[pageTitle]]"></oj-bind-text></h1>
+</div>
+<!--<div class="oj-flex-bar-end">
+    Add additional buttons here
+</div>-->
+
+
+
+<!-- the basicHeader.html -->
+<!-- under the start -->
+<!-- <oj-bind-if test="[[startBtn.visible]]">
+  <oj-button :id="[[startBtn.id]]"  on-oj-action='[[startBtn.click]]' display='[[startBtn.display]]' chroming='half'>
+    <span slot='startIcon' :class="[[startBtn.icons]]"></span>
+    <span><oj-bind-text value="[[startBtn.label]]"></oj-bind-text></span>
+  </oj-button>
+</oj-bind-if> -->
