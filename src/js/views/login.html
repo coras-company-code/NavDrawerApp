@@ -1,0 +1,40 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-applayout-page">
+  <div class="oj-applayout-fixed-top">
+    <!--
+       ** Oracle JET V11.0.1 hybrid mobile application header pattern.
+       ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
+       ** more information on how to use this pattern.
+    -->
+    <header role="banner" class="oj-hybrid-applayout-header">
+      <oj-module config="[[headerConfig]]"></oj-module>
+    </header>
+    <!-- need to remove the header however this module config is important  -->
+  </div>
+
+  <!-- This is where your main page content will be loaded -->
+  <div class="oj-applayout-content">
+    <div role="main" class="oj-hybrid-applayout-content">
+      <div class="oj-hybrid-padding">
+        <!-- my additions  -->
+        
+          <div class="oj-flex oj-sm-align-items-center oj-sm-flex-direction-column">
+              <img src="../../../css/images/Waitrose&PartnersLogo.png" alt="waitrose logo" height="96" />
+              <h5>STORE INVENTORY MANAGEMENT</h5>
+              <h5>SIGN IN</h5>
+          </div>
+          <oj-form-layout max-columns="2" direction="row">
+            <oj-input-text label-hint="Employee ID/Username"></oj-input-text>
+            <oj-input-password label-hint="Password"></oj-input-password>
+            <oj-button id="width_full_button" class="oj-sm-width-full" chroming="callToAction"> Sign in </oj-button>
+          </oj-form-layout>
+         <!-- my additions end -->
+      </div>
+    </div>
+  </div> 
+ 
+</div>
