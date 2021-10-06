@@ -8,14 +8,52 @@
 /*
  * Your application specific code will go here
  */
-define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-adapter', 'ojs/ojknockoutrouteradapter', 'ojs/ojurlparamadapter', 'ojs/ojarraydataprovider', 'ojs/ojoffcanvas', 'ojs/ojknockout', 'ojs/ojmodule-element', 'ojs/ojbutton', 'ojs/ojrouter'],
-  function (ko, Context, CoreRouter, ModuleRouterAdapter, KnockoutRouterAdapter, UrlParamAdapter, ArrayDataProvider, OffcanvasUtils) {
+define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-adapter', 'ojs/ojknockoutrouteradapter', 'ojs/ojurlparamadapter', 'ojs/ojarraydataprovider', 'ojs/ojoffcanvas', 'ojs/ojknockout', 'ojs/ojmodule-element', 'ojs/ojbutton', 'ojs/ojrouter', 'ojs/ojmoduleanimations', 'ojs/ojmodule-element-utils'],
+  function (ko, Context, CoreRouter, ModuleRouterAdapter, KnockoutRouterAdapter, UrlParamAdapter, ArrayDataProvider, OffcanvasUtils, ModuleElementUtils) {
 
     function ControllerViewModel() {
       var self = this;
 
+<<<<<<< Updated upstream
+=======
+      //New: routerTWO to replace router once it works
+      self.routerTWO = oj.Router.rootInstance;
+
+      self.routerTWO.configure({
+        'home': { label: 'Home', isDefault: true },
+        'dashboard': { label: 'Dashboard' }
+      });
+
+      oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
+
+      //**Module Config - HELP NEEDED**
+      self.moduleConfig = null
+      //this results in the error:
+      //Uncaught (in promise) TypeError: Unable to process binding "ojModule: function(){return {"view":config().view,"viewModel":config().viewModel,"cleanupMode":config().cleanupMode,"animation":animation} }"
+
+      //tried this with documentation 
+      // self.moduleConfig = ModuleElementUtils.createConfig({ name: 'dashboard' });
+
+      //Another suggestion from internet:
+      // self.pendingAnimationType = null;
+
+      // function switcherCallback(context) {
+      //   return self.pendingAnimationType;
+      // }
+
+      // function mergeConfig(original) {
+      //   return $.extend(true, {}, original, {
+      //     'animation': oj.ModuleAnimations.switcher(switcherCallback)
+      //   });
+      // }
+      // mergeConfig(self.routerTWO.moduleConfig);
+
+      //END of new
+
+>>>>>>> Stashed changes
       self.navDrawerOn = false;
 
+      //This will be replaced when above works
       var navData = [
         { path: '', redirect: 'dashboard' },
         { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } },
@@ -34,6 +72,7 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-ada
       // Setup the navDataProvider with the routes, excluding the first redirected
       // route.
       this.navDataProvider = new ArrayDataProvider(navData.slice(1), { keyAttributes: "path" });
+      //end of what will be replaced
 
       // Drawer setup
       self.toggleDrawer = function () {

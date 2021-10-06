@@ -59,11 +59,19 @@
  * object in the callback
  */
 require(['ojs/ojbootstrap', 'knockout', 'appController', 'ojs/ojlogger', 'ojs/ojknockout',
+<<<<<<< Updated upstream
 'ojs/ojmodule',  'ojs/ojnavigationlist'],
   function (Bootstrap, ko, app, Logger) { // this callback gets executed when all required modules are loaded
 
     Bootstrap.whenDocumentReady().then(
       function() {
+=======
+  'ojs/ojmodule', 'ojs/ojnavigationlist'],
+  function (Bootstrap, ko, app, Logger) { // this callback gets executed when all required modules are loaded
+
+    Bootstrap.whenDocumentReady().then(
+      function () {
+>>>>>>> Stashed changes
         function init() {
           // Bind your ViewModel for the content of the whole page body.
           ko.applyBindings(app, document.getElementById('globalBody'));
@@ -77,6 +85,10 @@ require(['ojs/ojbootstrap', 'knockout', 'appController', 'ojs/ojlogger', 'ojs/oj
           init();
         }
 
+<<<<<<< Updated upstream
     });
+=======
+      });
+>>>>>>> Stashed changes
   }
 );
