@@ -18,33 +18,33 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-ada
       self.routerTWO = oj.Router.rootInstance;
 
       self.routerTWO.configure({
-        'home': { label: 'Home', isDefault: true },
-        'dashboard': { label: 'Dashboard' }
+        'dashboard': { label: 'Dashboard', isDefault: true },
+        'about': { label: 'About' }
       });
 
       oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
       //**Module Config - HELP NEEDED**
-      self.moduleConfig = null
+      // self.moduleConfig = null
       //this results in the error:
       //Uncaught (in promise) TypeError: Unable to process binding "ojModule: function(){return {"view":config().view,"viewModel":config().viewModel,"cleanupMode":config().cleanupMode,"animation":animation} }"
 
       //tried this with documentation 
       // self.moduleConfig = ModuleElementUtils.createConfig({ name: 'dashboard' });
 
-      //Another suggestion from internet:
-      // self.pendingAnimationType = null;
+      // Another suggestion from internet:
+      self.pendingAnimationType = null;
 
-      // function switcherCallback(context) {
-      //   return self.pendingAnimationType;
-      // }
+      function switcherCallback(context) {
+        return self.pendingAnimationType;
+      }
 
-      // function mergeConfig(original) {
-      //   return $.extend(true, {}, original, {
-      //     'animation': oj.ModuleAnimations.switcher(switcherCallback)
-      //   });
-      // }
-      // mergeConfig(self.routerTWO.moduleConfig);
+      function mergeConfig(original) {
+        return $.extend(true, {}, original, {
+          'animation': oj.ModuleAnimations.switcher(switcherCallback)
+        });
+      }
+      mergeConfig(self.routerTWO.moduleConfig);
 
       //END of new
 
