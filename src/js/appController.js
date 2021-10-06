@@ -8,42 +8,17 @@
 /*
  * Your application specific code will go here
  */
-define(['knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-adapter', 'ojs/ojknockoutrouteradapter', 'ojs/ojurlparamadapter', 'ojs/ojarraydataprovider', 'ojs/ojoffcanvas', 'ojs/ojknockouttemplateutils', 'ojs/ojknockout', 'ojs/ojmodule-element', 'ojs/ojbutton'],
-  function (ko, Context, moduleUtils, CoreRouter, ModuleRouterAdapter, KnockoutRouterAdapter, UrlParamAdapter, ArrayDataProvider, OffcanvasUtils, KnockoutTemplateUtils) {
+define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-adapter', 'ojs/ojknockoutrouteradapter', 'ojs/ojurlparamadapter', 'ojs/ojarraydataprovider', 'ojs/ojoffcanvas', 'ojs/ojknockout', 'ojs/ojmodule-element', 'ojs/ojbutton', 'ojs/ojrouter'],
+  function (ko, Context, CoreRouter, ModuleRouterAdapter, KnockoutRouterAdapter, UrlParamAdapter, ArrayDataProvider, OffcanvasUtils) {
 
     function ControllerViewModel() {
       var self = this;
 
-      self.KnockoutTemplateUtils = KnockoutTemplateUtils;
-
-      // Handle announcements sent when pages change, for Accessibility.
-      self.manner = ko.observable('polite');
-      self.message = ko.observable();
-      self.waitForAnnouncement = false;
       self.navDrawerOn = false;
-
-      document.getElementById('globalBody').addEventListener('announce', announcementHandler, false);
-
-      /*
-        @waitForAnnouncement - set to true when the announcement is happening.
-        If the nav-drawer is ON, it is reset to false in 'ojclose' event handler of nav-drawer.
-        If the nav-drawer is OFF, then the flag is reset here itself in the timeout callback.
-      */
-      function announcementHandler(event) {
-        self.waitForAnnouncement = true;
-        self.message(event.detail.message);
-        self.manner(event.detail.manner);
-        if (!self.navDrawerOn) {
-          self.waitForAnnouncement = false;
-        }
-      };
 
       var navData = [
         { path: '', redirect: 'dashboard' },
         { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } },
-        { path: 'incidents', detail: { label: 'Incidents', iconClass: 'oj-ux-ico-fire' } },
-        { path: 'customers', detail: { label: 'Customers', iconClass: 'oj-ux-ico-contact-group' } },
-        { path: 'profile', detail: { label: 'Profile', iconClass: 'oj-ux-ico-contact' } },
         { path: 'about', detail: { label: 'About', iconClass: 'oj-ux-ico-information-s' } }
       ];
       // Router setup
@@ -66,21 +41,14 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojcorero
         return OffcanvasUtils.toggle({ selector: '#navDrawer', modality: 'modal', content: '#pageContent' });
       }
 
-      // Used by modules to get the current page title and adjust padding
-      self.getHeaderModel = function () {
-        // Return an object containing the current page title
-        // and callback handlers
+      // Used by modules to get the current page title (and can add adjust padding, but this is in dashboard.js and About.js instead)
+      self.getHeaderModel = function () { // Return an object containing the current page title // and callback handlers
         return {
-          pageTitle: 'Example', //self.selection.state().detail.label,
-          //transitionCompleted: self.adjustContentPadding,
-          //toggleDrawer: self.toggleDrawer,
+          pageTitle: self.selection.state().detail.label,
           startBtn: {
-            // id: 'navDrawerBtn',
             click: self.toggleDrawer,
-            // display: 'icons',
-            // label: 'Back',
-            icons: 'oj-fwk-icon oj-fwk-icon-hamburger', //include
-            visible: true //include
+            icons: 'oj-fwk-icon oj-fwk-icon-hamburger',
+            visible: true
           },
         };
       };
