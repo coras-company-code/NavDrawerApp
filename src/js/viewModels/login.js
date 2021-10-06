@@ -22,7 +22,7 @@ define(['knockout', 'appController', 'ojs/ojmodule-element-utils', 'accUtils',
                 self.headerConfig({ 'view': view, 'viewModel': app.getHeaderModel() })
             })
 
-            
+
             // Below are a set of the ViewModel methods invoked by the oj-module component.
             // Please reference the oj-module jsDoc for additional information.
 
@@ -44,6 +44,7 @@ define(['knockout', 'appController', 'ojs/ojmodule-element-utils', 'accUtils',
              * Optional ViewModel method invoked after the View is disconnected from the DOM.
              */
             self.disconnected = function () {
+                app.adjustContentPadding();
                 // Implement if needed
             };
 
