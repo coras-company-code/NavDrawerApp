@@ -42,16 +42,7 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-ada
       }
 
       // Used by modules to get the current page title (and can add adjust padding, but this is in dashboard.js and About.js instead)
-      self.getHeaderModel = function () { // Return an object containing the current page title // and callback handlers
-        return {
-          pageTitle: self.selection.state().detail.label,
-          startBtn: {
-            click: self.toggleDrawer,
-            icons: 'oj-fwk-icon oj-fwk-icon-hamburger',
-            visible: true
-          },
-        };
-      };
+      //removed getHeaderModel to dashboard and about
 
       // Method for adjusting the content area top/bottom paddings to avoid overlap with any fixed regions.
       // This method should be called whenever your fixed region height may change.  The application

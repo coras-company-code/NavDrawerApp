@@ -8,44 +8,18 @@
 /*
  * Your dashboard ViewModel code goes here
  */
-define(['knockout', 'appController', 'ojs/ojmodule-element-utils', 'accUtils', 'ojs/ojcontext'],
-  function (ko, app, moduleUtils, accUtils, Context) {
+define(['knockout', 'appController', 'accUtils'],
+  function (ko, app, accUtils) {
 
     function DashboardViewModel() {
       var self = this;
 
-      // Wait until header show up to resolve
-      // var resolve = Context.getPageContext().getBusyContext().addBusyState({ description: "wait for header" });
-
-      // self.dashboardHeaderSettings = {
-      //   name: 'header',
-      //   params: {
-      //     pageTitle: self.selection.state().detail.label,
-      //     transitionCompleted: app.adjustContentPadding(), //brackets?
-      //     toggleDrawer: app.toggleDrawer,
-      //     startBtn: {
-      //       // id: 'navDrawerBtn',
-      //       // click: app.toggleDrawer,
-      //       // display: 'icons',
-      //       // label: 'Back',
-      //       icons: 'oj-fwk-icon oj-fwk-icon-hamburger',
-      //       visible: true
-      //     }
-      //     //need to integrate this in 
-
-      //     // endBtn: {
-      //     //   visible: false
-      //     // }
-      //   }
-
-      // };
-
-      //  Header Config
-      self.dashboardHeaderConfig = ko.observable({ 'view': [], 'viewModel': null });
-      moduleUtils.createView({ 'viewPath': 'views/header.html' }).then(function (view) {
-        self.dashboardHeaderConfig({ 'view': view, 'viewModel': app.getHeaderModel() })
-        resolve();
-      })
+      self.pageTitle = app.selection.state().detail.label;
+      self.startBtn = {
+        click: app.toggleDrawer,
+        icons: 'oj-fwk-icon oj-fwk-icon-hamburger',
+        visible: true
+      };
 
       //this is what it calls 
 

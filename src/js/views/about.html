@@ -10,8 +10,21 @@
        ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
        ** more information on how to use this pattern.
     -->
-    <header role="banner" class="oj-hybrid-applayout-header" data-bind="ojModule: aboutHeaderConfig">
+    <!-- <header role="banner" class="oj-hybrid-applayout-header" data-bind="ojModule: aboutHeaderConfig"> -->
+    <header role="banner" class="oj-hybrid-applayout-header">
       <!-- <oj-module config="[[headerConfig]]"></oj-module> -->
+      <div class="oj-flex-bar-start">
+        <oj-bind-if test="[[startBtn.visible]]">
+         <oj-button id="drawerToggleButton" on-oj-action='[[startBtn.click]]' display="icons" chroming="borderless">
+           <!-- <span slot="startIcon" class="[[startBtn.icons]]"></span> -->
+           <span slot='startIcon' :class="[[startBtn.icons]]"></span>
+           <span>Navigation Drawer</span>
+         </oj-button>
+        </oj-bind-if>
+      </div>
+      <div role="heading" class="oj-hybrid-applayout-bar-title">
+        <h1 class="oj-hybrid-applayout-header-title"><oj-bind-text value="[[pageTitle]]"></oj-bind-text></h1>
+      </div>
     </header>
   </div>
   <!-- This is where your main page content will be loaded -->

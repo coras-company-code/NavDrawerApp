@@ -8,20 +8,18 @@
 /*
  * Your about ViewModel code goes here
  */
-define(['knockout', 'appController', 'ojs/ojmodule-element-utils', 'accUtils', 'ojs/ojcontext'],
-  function (ko, app, moduleUtils, accUtils, Context) {
+define(['knockout', 'appController', 'accUtils'],
+  function (ko, app, accUtils) {
 
     function AboutViewModel() {
       var self = this;
 
-      // Wait until header show up to resolve
-      var resolve = Context.getPageContext().getBusyContext().addBusyState({ description: "wait for header" });
-      // Header Config
-      self.aboutHeaderConfig = ko.observable({ 'view': [], 'viewModel': null });
-      moduleUtils.createView({ 'viewPath': 'views/header.html' }).then(function (view) {
-        self.aboutHeaderConfig({ 'view': view, 'viewModel': app.getHeaderModel() });
-        resolve();
-      })
+      self.pageTitle = app.selection.state().detail.label;
+      self.startBtn = {
+        click: app.toggleDrawer,
+        icons: 'oj-fwk-icon oj-fwk-icon-hamburger',
+        visible: true
+      };
 
       // Below are a set of the ViewModel methods invoked by the oj-module component.
       // Please reference the oj-module jsDoc for additional information.
