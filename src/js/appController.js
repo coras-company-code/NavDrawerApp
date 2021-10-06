@@ -14,6 +14,21 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-ada
     function ControllerViewModel() {
       var self = this;
 
+      //BEFORE commiting tidy version remove this
+      oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
+
+      var router2 = oj.Router.rootInstance;
+
+      // Root router configuration
+      router2.configure({
+        'dashboard': { label: 'Dashboard', isDefault: true },
+        'about': { label: 'About' }
+      });
+
+      self.router2 = router2;
+
+      //END
+
       self.navDrawerOn = false;
 
       var navData = [
