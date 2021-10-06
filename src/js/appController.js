@@ -14,8 +14,6 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-ada
     function ControllerViewModel() {
       var self = this;
 
-<<<<<<< Updated upstream
-=======
       //New: routerTWO to replace router once it works
       self.routerTWO = oj.Router.rootInstance;
 
@@ -50,7 +48,6 @@ define(['knockout', 'ojs/ojcontext', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-ada
 
       //END of new
 
->>>>>>> Stashed changes
       self.navDrawerOn = false;
 
       //This will be replaced when above works

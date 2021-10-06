@@ -13,12 +13,12 @@
 
 
 (function () {
-    // The "oj_whenReady" global variable enables a strategy that the busy context whenReady,
-    // will implicitly add a busy state, until the application calls applicationBootstrapComplete
-    // on the busy state context.
-    window["oj_whenReady"] = true;
+  // The "oj_whenReady" global variable enables a strategy that the busy context whenReady,
+  // will implicitly add a busy state, until the application calls applicationBootstrapComplete
+  // on the busy state context.
+  window["oj_whenReady"] = true;
 
-    requirejs.config(
+  requirejs.config(
     {
       baseUrl: 'js',
 
@@ -29,22 +29,22 @@
         'ojs': 'libs/oj/v11.0.1/debug',
         'ojL10n': 'libs/oj/v11.0.1/ojL10n',
         'ojtranslations': 'libs/oj/v11.0.1/resources',
-          'knockout': 'libs/knockout/knockout-3.5.1.debug',
-  'knockout-mapping': 'libs/knockout/knockout.mapping-latest.debug',
-  'jquery': 'libs/jquery/jquery-3.6.0',
-  'jqueryui-amd': 'libs/jquery/jqueryui-amd-1.12.1',
-  'text': 'libs/require/text',
-  'hammerjs': 'libs/hammer/hammer-2.0.8',
-  'signals': 'libs/js-signals/signals',
-  'ojdnd': 'libs/dnd-polyfill/dnd-polyfill-1.0.2',
-  'css': 'libs/require-css/css.min',
-  'css-builder': 'libs/require-css/css-builder',
-  'normalize': 'libs/require-css/normalize',
-  'preact': 'libs/preact/dist/preact.umd',
-  'preact/hooks': 'libs/preact/hooks/dist/hooks.umd',
-  'proj4': 'libs/proj4js/dist/proj4-src',
-  'touchr': 'libs/touchr/touchr'
-  ,
+        'knockout': 'libs/knockout/knockout-3.5.1.debug',
+        'knockout-mapping': 'libs/knockout/knockout.mapping-latest.debug',
+        'jquery': 'libs/jquery/jquery-3.6.0',
+        'jqueryui-amd': 'libs/jquery/jqueryui-amd-1.12.1',
+        'text': 'libs/require/text',
+        'hammerjs': 'libs/hammer/hammer-2.0.8',
+        'signals': 'libs/js-signals/signals',
+        'ojdnd': 'libs/dnd-polyfill/dnd-polyfill-1.0.2',
+        'css': 'libs/require-css/css.min',
+        'css-builder': 'libs/require-css/css-builder',
+        'normalize': 'libs/require-css/normalize',
+        'preact': 'libs/preact/dist/preact.umd',
+        'preact/hooks': 'libs/preact/hooks/dist/hooks.umd',
+        'proj4': 'libs/proj4js/dist/proj4-src',
+        'touchr': 'libs/touchr/touchr'
+        ,
         'chai': 'libs/chai/chai-4.3.4'
       }
       // endinjector
@@ -59,19 +59,11 @@
  * object in the callback
  */
 require(['ojs/ojbootstrap', 'knockout', 'appController', 'ojs/ojlogger', 'ojs/ojknockout',
-<<<<<<< Updated upstream
-'ojs/ojmodule',  'ojs/ojnavigationlist'],
-  function (Bootstrap, ko, app, Logger) { // this callback gets executed when all required modules are loaded
-
-    Bootstrap.whenDocumentReady().then(
-      function() {
-=======
   'ojs/ojmodule', 'ojs/ojnavigationlist'],
   function (Bootstrap, ko, app, Logger) { // this callback gets executed when all required modules are loaded
 
     Bootstrap.whenDocumentReady().then(
       function () {
->>>>>>> Stashed changes
         function init() {
           // Bind your ViewModel for the content of the whole page body.
           ko.applyBindings(app, document.getElementById('globalBody'));
@@ -85,10 +77,6 @@ require(['ojs/ojbootstrap', 'knockout', 'appController', 'ojs/ojlogger', 'ojs/oj
           init();
         }
 
-<<<<<<< Updated upstream
-    });
-=======
       });
->>>>>>> Stashed changes
   }
 );
